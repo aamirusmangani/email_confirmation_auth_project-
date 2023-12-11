@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="login-form">
+  <form method="post" novalidate>
+    <div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
+    <h4 class="modal-title">Create an Account</h4>
+      <div class="form-group">
+        {% csrf_token %}
+        {% for fm in form %}
+          {{fm}} 
+          {{fm.errors|striptags}}<br />
+        {% endfor %}
+      </div>
+      <input type="submit" class="btn btn-primary btn-block btn-lg" value="Create an Account"/>
+  </form>
+  <div class="text-center small">
+    Have an account? <a href="{% url 'login' %}">Sign in<a>
+  </div>
+</div>
+{% endblock %}
